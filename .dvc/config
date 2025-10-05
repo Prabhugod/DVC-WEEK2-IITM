@@ -1,0 +1,4 @@
+[core]
+    remote = gcsremote
+['remote "gcsremote"']
+    url = gs://mlops-iitm-geometric-gamma-472903-q2-v4-unique/Graded-Assignments/Week-2
