@@ -26,8 +26,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r .github/workflows/requirements.txt
-          pip install dvc cml
-          pip install 'dvc[gs]' --upgrade --use-deprecated=legacy-resolver
 
       - name: Pull DVC tracked data
         run: dvc pull
