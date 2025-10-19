@@ -35,7 +35,7 @@ jobs:
         env:
           DVC_GCS_CREDENTIALS_JSON: ${{ secrets.GCS_CREDENTIALS_JSON }}
         run: |
-          dvc remote modify --local myremote gdrive_user_credentials $DVC_GCS_CREDENTIALS_JSON
+          dvc remote modify --local gcsremote gdrive_user_credentials $DVC_GCS_CREDENTIALS_JSON
           dvc pull
 
       # Run evaluation/tests
