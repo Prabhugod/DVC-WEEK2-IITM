@@ -36,7 +36,7 @@ jobs:
           GCS_KEY: ${{ secrets.GCS_KEY }}
         run: |
           # Decode the base64-encoded secret to a JSON file
-          echo "$GCS_KEY" | base64 --decode > gcp-key.json
+          echo "$GCS_KEY" > gcp-key.json
           # Set environment variable for Google SDK
           echo "GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json" >> $GITHUB_ENV
           export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json
