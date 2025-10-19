@@ -31,23 +31,34 @@ jobs:
           pip install -r .github/workflows/requirements.txt
 
       # Authenticate with GCP
-      - name: Set up GCP credentials
+      - name: Set up GCP credentials and authenticate
         env:
-          GCS_KEY: ${{ secrets.GCP_CREDENTIALS_B64 }}
+          GCP_B64: ${{ secrets.GCP_CREDENTIALS_B64 }}
         run: |
-          # Decode the base64-encoded secret to a JSON file
-          echo "$GCS_KEY" | base64 -d > gcp-key.json
-          # Set environment variable for Google SDK
+          set -e
+          echo "$GCP_B64" | base64 -d > gcp-key.json
           echo "GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json" >> $GITHUB_ENV
           export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json
-          # Authenticate with gcloud
+          
+          echo "✓ Decoded service account key"
+          python3 -m json.tool gcp-key.json > /dev/null && echo "✓ Valid JSON"
+          
+          echo "Installing Google Cloud CLI..."
+          sudo apt-get update && sudo apt-get install -y google-cloud-cli
+          
+          echo "Authenticating with GCP..."
           gcloud auth activate-service-account --key-file=gcp-key.json
-          gcloud config set project mlops-466312
-          echo "✓ Authenticated with GCP"
-      # Pull DVC-tracked data from GCS
-      - name: Pull DVC data
-        run: |
+          gcloud config set project geometric-gamma-472903-q2
+          
+          echo "Running DVC pull in same session..."
+          source .venv/bin/activate
+          
+          export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcp-key.json
+          
+          echo "Configuring DVC to use gcloud credentials..."
           dvc remote modify gcsremote credentialpath $(pwd)/gcp-key.json
+          
+          echo "Running DVC pull:"
           dvc pull -v
       # Run evaluation/tests
       - name: Run evaluation/tests
