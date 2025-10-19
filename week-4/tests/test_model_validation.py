@@ -3,8 +3,8 @@ import pandas as pd
 import pytest
 from sklearn.metrics import accuracy_score
 
-MODEL_PATH = "/home/jupyter/week-2/DVC-WEEK2-IITM/models/model_default.pkl"
-DATA_PATH = "/home/jupyter/week-2/DVC-WEEK2-IITM/data/v1/data.csv"
+MODEL_PATH = "DVC-WEEK2-IITM/models/model_default.pkl"
+DATA_PATH = "DVC-WEEK2-IITM/data/v1/data.csv"
 
 @pytest.fixture
 def model():
