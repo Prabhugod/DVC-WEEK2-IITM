@@ -33,7 +33,7 @@ jobs:
       # Pull DVC tracked data
       - name: Pull DVC tracked data
         env:
-          DVC_GCS_CREDENTIALS_JSON: ${{ secrets.GCS_CREDENTIALS_JSON }}
+          DVC_GCS_CREDENTIALS_JSON: ${{ secrets.GCS_KEY }}
         run: |
           dvc remote modify --local gcsremote gcs_credentials_path $DVC_GCS_CREDENTIALS_JSON
           dvc pull
