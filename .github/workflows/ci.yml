@@ -33,7 +33,7 @@ jobs:
       # Authenticate with GCP
       - name: Set up GCP credentials
         env:
-          GCS_KEY: ${{ secrets.GCS_KEY }}
+          GCS_KEY: ${{ secrets.GCP_CREDENTIALS_B64 }}
         run: |
           # Decode the base64-encoded secret to a JSON file
           echo "$GCS_KEY" | base64 -d > gcp-key.json
