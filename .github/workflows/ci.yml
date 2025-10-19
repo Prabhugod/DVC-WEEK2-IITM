@@ -28,7 +28,7 @@ jobs:
           pip install -r .github/workflows/requirements.txt
 
       - name: Pull DVC tracked data
-        run: dvc pull
+        run: dvc pull --offline
 
       - name: Run evaluation/tests
         run: pytest week-4/tests/ -v
