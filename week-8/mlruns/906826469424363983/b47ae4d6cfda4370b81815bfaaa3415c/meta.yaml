@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/b47ae4d6cfda4370b81815bfaaa3415c/artifacts
+end_time: 1763310171148
+entry_point_name: ''
+experiment_id: '906826469424363983'
+lifecycle_stage: active
+run_id: b47ae4d6cfda4370b81815bfaaa3415c
+run_name: industrious-goat-192
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763310167105
+status: 3
+tags: []
+user_id: jupyter

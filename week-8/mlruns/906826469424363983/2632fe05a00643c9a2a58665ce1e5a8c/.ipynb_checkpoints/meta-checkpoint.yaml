@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/2632fe05a00643c9a2a58665ce1e5a8c/artifacts
+end_time: 1763310178191
+entry_point_name: ''
+experiment_id: '906826469424363983'
+lifecycle_stage: active
+run_id: 2632fe05a00643c9a2a58665ce1e5a8c
+run_name: gregarious-squid-909
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763310174392
+status: 3
+tags: []
+user_id: jupyter

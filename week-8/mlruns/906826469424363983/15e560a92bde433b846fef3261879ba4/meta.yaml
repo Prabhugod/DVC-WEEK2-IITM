@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/15e560a92bde433b846fef3261879ba4/artifacts
+end_time: 1763310585632
+entry_point_name: ''
+experiment_id: '906826469424363983'
+lifecycle_stage: active
+run_id: 15e560a92bde433b846fef3261879ba4
+run_name: entertaining-pug-194
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763310582286
+status: 3
+tags: []
+user_id: jupyter

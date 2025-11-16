@@ -1,0 +1,74 @@
+name: CD - Build & Deploy to GKE
+
+on:
+  push:
+    branches:
+      - main          # trigger on merges to main (change as needed)
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+      REGION: ${{ secrets.GCP_REGION }}
+      GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
+      GKE_ZONE: ${{ secrets.GKE_ZONE }}
+      REPO_NAME: iris-api-repo
+      GAR_HOST: ${{ secrets.GCP_REGION }}-docker.pkg.dev
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ secrets.GCP_PROJECT }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Configure Docker to use Artifact Registry
+        run: |
+          echo "Configuring Docker auth for Artifact Registry"
+          gcloud auth configure-docker ${GAR_HOST}
+
+      - name: Build Docker image
+        run: |
+          IMAGE_TAG=${GAR_HOST}/${PROJECT_ID}/${REPO_NAME}:$(echo $GITHUB_SHA | cut -c1-7)
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+          docker build -t $IMAGE_TAG .
+
+      - name: Push image to Artifact Registry
+        run: |
+          docker push $IMAGE_TAG
+
+      - name: Get GKE credentials
+        run: |
+          gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $PROJECT_ID
+
+      - name: Update k8s manifests with new image and deploy
+        run: |
+          # replace placeholder in k8s deployment with actual image tag
+          sed -i "s|REPLACE_IMAGE_WITH_TAG|${IMAGE_TAG}|g" k8s/deployment.yaml
+          kubectl apply -f k8s/namespace.yaml || true
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
+
+      - name: Wait for LoadBalancer IP
+        run: |
+          echo "Waiting for external IP..."
+          for i in {1..30}; do
+            IP=$(kubectl get svc iris-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}' || true)
+            if [ -n "$IP" ]; then
+              echo "External IP: $IP"
+              echo "APP_IP=$IP" >> $GITHUB_ENV
+              break
+            fi
+            echo "Waiting 10s..."
+            sleep 10
+          done
+
+      - name: Output deployment info
+        run: |
+          echo "Deployed image: $IMAGE_TAG"
+          echo "Service IP: $APP_IP"

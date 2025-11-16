@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/6c777065bd85410cb9b8717deb6f9c71/artifacts
+end_time: 1763310181485
+entry_point_name: ''
+experiment_id: '906826469424363983'
+lifecycle_stage: active
+run_id: 6c777065bd85410cb9b8717deb6f9c71
+run_name: shivering-seal-667
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763310178201
+status: 3
+tags: []
+user_id: jupyter

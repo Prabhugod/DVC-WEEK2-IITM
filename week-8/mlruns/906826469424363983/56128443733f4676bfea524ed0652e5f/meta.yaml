@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/56128443733f4676bfea524ed0652e5f/artifacts
+end_time: 1763310592296
+entry_point_name: ''
+experiment_id: '906826469424363983'
+lifecycle_stage: active
+run_id: 56128443733f4676bfea524ed0652e5f
+run_name: sedate-cow-666
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763310589010
+status: 3
+tags: []
+user_id: jupyter

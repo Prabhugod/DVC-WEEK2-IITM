@@ -1,0 +1,10 @@
+artifact_location: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/models/m-eb61121a62874552bc5b3dae812ed3a5/artifacts
+creation_timestamp: 1763310181520
+experiment_id: '906826469424363983'
+last_updated_timestamp: 1763310186339
+model_id: m-eb61121a62874552bc5b3dae812ed3a5
+model_type: null
+name: model
+source_run_id: b2ccf8e629424021b920ce97d4c6ce5f
+status: 2
+status_message: null

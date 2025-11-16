@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/225811f05bfd41f298e72a40e529fa03/artifacts
+end_time: 1763310582276
+entry_point_name: ''
+experiment_id: '906826469424363983'
+lifecycle_stage: active
+run_id: 225811f05bfd41f298e72a40e529fa03
+run_name: merciful-swan-459
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763310578169
+status: 3
+tags: []
+user_id: jupyter

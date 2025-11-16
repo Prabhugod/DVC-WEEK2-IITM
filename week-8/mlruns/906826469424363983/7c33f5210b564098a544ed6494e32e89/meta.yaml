@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/7c33f5210b564098a544ed6494e32e89/artifacts
+end_time: 1763310193800
+entry_point_name: ''
+experiment_id: '906826469424363983'
+lifecycle_stage: active
+run_id: 7c33f5210b564098a544ed6494e32e89
+run_name: victorious-koi-648
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763310190578
+status: 3
+tags: []
+user_id: jupyter
