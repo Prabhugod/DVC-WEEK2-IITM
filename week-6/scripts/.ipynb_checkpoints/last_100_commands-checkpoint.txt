@@ -1,0 +1,44 @@
+  353  curl -X POST "http://34.66.83.3:8000/predict/" -H"Content-Type:application/json" -d'{"sepal_length":5.1,"sepal_width":3.5,"petal_length":1.4,"petal_width":0.2}'
+  354  curl -X POST "http://34.66.83.3:8000/predict/" -H"Content-Type:application/json" -d'{"sepal_length":5.1,"sepal_width":3.5,"petal_length":1.4,"petal_width":0.5}'
+  355  clear
+  356  ls
+  357  sudo usermod -aG docker $USER
+  358  docker build -t iris-api
+  359  docker build -t iris-api .
+  360  touch Dockerfile
+  361  ls
+  362  cd scripts
+  363  ls
+  364  nano Dockerfile
+  365  cat Dockerfile
+  366  docker build -t iris-api .
+  367  docker images
+  368  clear
+  369  docker run -d -p 8200:8200 iris-api
+  370  docker logs 307f6453180ab7d4660fc010192393372f2195c266f453ff749e5291bd5620fd
+  371  pip install pandas
+  372  docker logs 307f6453180ab7d4660fc010192393372f2195c266f453ff749e5291bd5620fd
+  373  nano requirements.txt
+  374  docker build -t iris-api .
+  375  docker images
+  376  docker run -d -p 8200:8200 iris-api
+  377  docker logs 4dcd7d6272de2c4a89adf440b9e425877d237b215bd7697fafdf08910eaf4035
+  378  curl -X POST "http://34.66.83.3:8200/predict/" -H"Content-Type:application/json" -d'{"sepal_length":5.1,"sepal_width":3.5,"petal_length":1.4,"petal_width":0.2}'
+  379  docker logs 4dcd7d6272de2c4a89adf440b9e425877d237b215bd7697fafdf08910eaf4035
+  380  docker ps
+  381  docker images
+  382  gcloud services enable artifactregistry.googleapis.com
+  383  gcloud artifacts repositories create my-repo -- repository-format=docker --location=us-central1 --decription="Docker repo for ML Model"
+  384  gcloud artifacts repositories create my-repo -- repository-format=docker --location=us-central1 --decription="Docker repo for ML Model"
+  385  gcloud artifacts repositories create my-repo   --repository-format=docker   --location=us-central1   --description="Docker repo for ML Model"
+  386  gcloud auth configure-docker us-central1-docker.pkg.dev
+  387  docker images
+  388  docker tage iris-api us-central1-docker.pkg.dev/geometric-gamma-472903-q2/my-repo/iris-api:latest
+  389  docker tag iris-api us-central1-docker.pkg.dev/geometric-gamma-472903-q2/my-repo/iris-api:latest
+  390  docker push us-central1-docker.pkg.dev/geometric-gamma-472903-q2/my-repo/iris-api:latest
+  391  kubectl get pods
+  392  gcloud container clusters get-credentials iris-cluster --zone us-central1 --project geometric-gamma-472903-q2
+  393  kubectl get pods
+  394  clear
+  395  docker images
+  396  history | tail -n 100 > ~/last_100_commands.txt

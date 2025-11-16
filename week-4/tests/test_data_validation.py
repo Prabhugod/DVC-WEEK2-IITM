@@ -2,7 +2,7 @@ import pandas as pd
 import pytest
 import os
 
-DATA_PATH = "/home/jupyter/week-2/DVC-WEEK2-IITM/data/v1/data.csv"
+DATA_PATH = "DVC-WEEK2-IITM/data/v1/data.csv"
 
 @pytest.fixture
 def iris_data():
