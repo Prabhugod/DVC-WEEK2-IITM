@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/387898d87e04427a885c3ec5651dd5da/artifacts
+end_time: 1763310595541
+entry_point_name: ''
+experiment_id: '906826469424363983'
+lifecycle_stage: active
+run_id: 387898d87e04427a885c3ec5651dd5da
+run_name: clumsy-gnu-424
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763310592305
+status: 3
+tags: []
+user_id: jupyter

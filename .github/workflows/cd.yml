@@ -3,7 +3,7 @@ name: CD - Build & Deploy to GKE
 on:
   push:
     branches:
-      - main
+      - main          # trigger on merges to main (change as needed)
   workflow_dispatch:
 
 jobs:
@@ -27,8 +27,9 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
 
-      - name: Configure Docker for Artifact Registry
+      - name: Configure Docker to use Artifact Registry
         run: |
+          echo "Configuring Docker auth for Artifact Registry"
           gcloud auth configure-docker ${GAR_HOST}
 
       - name: Build Docker image
@@ -45,12 +46,29 @@ jobs:
         run: |
           gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $PROJECT_ID
 
-      - name: Update k8s manifests and deploy
+      - name: Update k8s manifests with new image and deploy
         run: |
+          # replace placeholder in k8s deployment with actual image tag
           sed -i "s|REPLACE_IMAGE_WITH_TAG|${IMAGE_TAG}|g" k8s/deployment.yaml
+          kubectl apply -f k8s/namespace.yaml || true
           kubectl apply -f k8s/deployment.yaml
           kubectl apply -f k8s/service.yaml
+
+      - name: Wait for LoadBalancer IP
+        run: |
+          echo "Waiting for external IP..."
+          for i in {1..30}; do
+            IP=$(kubectl get svc iris-api-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}' || true)
+            if [ -n "$IP" ]; then
+              echo "External IP: $IP"
+              echo "APP_IP=$IP" >> $GITHUB_ENV
+              break
+            fi
+            echo "Waiting 10s..."
+            sleep 10
+          done
 
       - name: Output deployment info
         run: |
           echo "Deployed image: $IMAGE_TAG"
+          echo "Service IP: $APP_IP"

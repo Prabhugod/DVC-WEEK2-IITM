@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/b2ccf8e629424021b920ce97d4c6ce5f/artifacts
+end_time: 1763310186345
+entry_point_name: ''
+experiment_id: '906826469424363983'
+lifecycle_stage: active
+run_id: b2ccf8e629424021b920ce97d4c6ce5f
+run_name: useful-dog-59
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763310181492
+status: 3
+tags: []
+user_id: jupyter

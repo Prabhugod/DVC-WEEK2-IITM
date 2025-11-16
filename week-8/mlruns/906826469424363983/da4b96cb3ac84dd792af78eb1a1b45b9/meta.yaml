@@ -1,0 +1,14 @@
+artifact_uri: file:///home/jupyter/week-2/DVC-WEEK2-IITM/week-8/mlruns/906826469424363983/da4b96cb3ac84dd792af78eb1a1b45b9/artifacts
+end_time: 1763310588997
+entry_point_name: ''
+experiment_id: '906826469424363983'
+lifecycle_stage: active
+run_id: da4b96cb3ac84dd792af78eb1a1b45b9
+run_name: invincible-wasp-667
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763310585644
+status: 3
+tags: []
+user_id: jupyter

@@ -1,0 +1,27 @@
+{
+  "params": {
+    "poison_type": "label_flip",
+    "poison_frac": 0.05,
+    "max_depth": 3
+  },
+  "val_accuracy": 0.9333333333333333,
+  "val_f1_macro": 0.9332591768631814,
+  "train_time_sec": 0.0025086402893066406,
+  "confusion_matrix": [
+    [
+      15,
+      0,
+      0
+    ],
+    [
+      0,
+      14,
+      1
+    ],
+    [
+      0,
+      2,
+      13
+    ]
+  ]
+}
